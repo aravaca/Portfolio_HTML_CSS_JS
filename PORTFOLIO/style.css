@@ -4,6 +4,9 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     background: #080808;
     color: #fff;
@@ -21,28 +24,28 @@ body{
 }
 nav{
     display: flex;
-    align-items:  center;
+    align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
 
 }
-.logo {
+/* .logo {
     width: 140px;
-}
+} */
 
 nav ul li{
     display: inline-block;
     list-style: none;
     margin: 10px 20px;
-
-    
+    margin-left: 0;
 }
 
 nav ul li a{
-    columns: #fff;
+    color: #fff;
     text-decoration: none;
     font-size: 18px;
     position: relative;
+    
 }
 
 nav ul li a::after{
@@ -252,4 +255,137 @@ nav ul li a:hover::after{
 }
 .btn:hover{
     background: #ff004f;
+}
+
+/*------------contact-----------*/
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 60%;
+}
+.contact-left p {
+    margin-top: 30px;
+}
+.contact-left p i{
+    color: #ff004f;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.social-icons{
+    margin-top: 30px;
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-right: 10px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.social-icons a:hover{
+    color: #ff004f;
+    transform: translateY(-5px);
+}
+.btn.btn2{
+    display: inline-block;
+    background: #ff004f;
+}
+.contact-right form{
+    width: 100%;
+}
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+form .btn2{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+
+}
+
+/* ----------------------css for small screen------------ */
+nav .fa-solid{
+    display: none;
+}
+
+
+@media only screen and (max-width: 600px){
+    
+    /* #css properties added to this section are solely for small screens */
+    #header{
+        background-image: url(images/IMG_8818-adobe.jpg);
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fa-solid{
+        display: block;
+        font-size: 25px;
+        padding-top: 25px;
+    }
+    nav ul{
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: left 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px;
+    }
+    nav ul .fa-solid{
+        position: absolute;
+        top: 10px;
+        left: 50px;
+        cursor: pointer;
+    }
+
+    .sub-title{
+        font-size: 40px;
+    }
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+
+
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+
+    }
+}
+
+#msg{
+    color: #61b752;
+    margin-top: -40px;
+    display: block;
 }

@@ -11,15 +11,18 @@
 <div id= "header">  
     <div class="container">
         <nav>
-            <img src="images/logo.png" class = "logo">
-            <ul>
-                <li><a href="#">01 : Home</a></li>
-                <li><a href="#">02 : Resume</a></li>
-                <li><a href="#">03 : Blog</a></li>
+            <!-- <img src="images/logo.png" class = "logo"> -->
+            <ul id="sidemenu">
+                <li onclick="closemenu()"><a href="#header">Home</a></li>
+                <li onclick="closemenu()"><a href="#about">About</a></li>
+                <li onclick="closemenu()"><a href="#services">Services</a></li>
+                <li onclick="closemenu()"><a href="#contact">Contact</a></li>
+                <i class="fa-solid fa-bars" onclick="closemenu()"></i>
             </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
         </nav>
         <div class = "header-text">
-            <p>Computer Science Enthusiast</p>
+            <p>Welcome in!</p>
             
             <h1>Hello, I am <span>Hyungsuk Choi</span><br>From South Korea</h1>
         </div>
@@ -133,6 +136,34 @@
 </div>
 
 <!-- ------------------contact-------------- -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-envelope"></i>chs_3411@naver[dot]com</p>
+                <p><i class="fa-solid fa-phone"></i>+1 (240)-807-2366 (Washington D.C.)</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/harry_choi_"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/hyungsuk-choi-95737b212?trk=public_profile_browsemap"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://blog.naver.com/chs_3411"><i class="fa-solid fa-pen-nib"></i></a>
+                </div>
+                <a href="files/Résumé (1).pdf" download class ="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="Email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
 
     var tablinks = document.getElementsByClassName("tab-links");
@@ -150,6 +181,38 @@
     }
 
 </script>
+
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+    
+    function openmenu(){
+        sidemenu.style.left = "0";
+    }
+    function closemenu(){
+        sidemenu.style.left = "-200px";
+    }
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz2ss8v5JlyXchPJClHKD_a78v4523s0ncs5Ebr5irW7sH901QHi6aI43BpyESVRqPJ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Submitted!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            // <!-- 5000ms -->
+            }, 5000) 
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
     
 </body>
 </html>
